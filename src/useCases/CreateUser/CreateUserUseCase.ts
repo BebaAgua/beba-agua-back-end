@@ -1,4 +1,6 @@
 import { hash } from "bcryptjs";
+import { sign } from "jsonwebtoken";
+
 import { client } from "../../prisma/client";
 
 interface iUserRequest {
@@ -50,7 +52,10 @@ class CreateUserUseCase {
         age,
       },
     });
-    return user;
+    const token = sign({}, "02cbce81-ed12-4129-8b78-3850c55a3c1e", {
+      subject: user.id,
+    });
+    return { user, token };
   }
 }
 
