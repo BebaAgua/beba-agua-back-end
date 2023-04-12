@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![BebaAgua](../beba-agua-back-end/src/assets/logo.png)
+![BebaAgua](../beba-agua-back-end/src/assets/logo.jpg)
 
 </div>
 
