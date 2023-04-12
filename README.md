@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![BebaAgua](../beba-agua-back-end/src/assets/logo.jpg)
+![logo](https://user-images.githubusercontent.com/128413495/231575770-83ec8a17-f6e0-40d7-b5b8-d0e1eb823dbc.jpg)
 
 </div>
 
