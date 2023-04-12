@@ -52,7 +52,7 @@ class CreateUserUseCase {
         age,
       },
     });
-    const token = sign({}, "02cbce81-ed12-4129-8b78-3850c55a3c1e", {
+    const token = sign({}, process.env.SECRET, {
       subject: user.id,
     });
     return { user, token };
