@@ -13,7 +13,7 @@
 
 ## Sobre
 
-Back End do projeto de conclusão do curso de Análise e Desenvolvimento de Sistemas (Faculdade Impacta).
+Back End do projeto de conclusão do curso de Análise e Desenvolvimento de Sistemas (Faculdade Impacta), com o intuito de criar o hábito saudável de beber a quantidade correta de água todos os dias.
 
 ## Índice
 
