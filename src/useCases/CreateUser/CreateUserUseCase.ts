@@ -8,7 +8,7 @@ interface iUserRequest {
   email: string;
   password: string;
   confirm_password: string;
-  weight: number;
+  weight: string;
   age: number;
 }
 
