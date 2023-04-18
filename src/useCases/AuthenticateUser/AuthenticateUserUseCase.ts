@@ -10,17 +10,17 @@ interface IRequest {
 
 class AutheticateUserUseCase {
   async execute({ email, password }: IRequest) {
-    const userAlreadyExists = await client.user.findFirst({
+    const user = await client.user.findFirst({
       where: {
         email,
       },
     });
-    if (!userAlreadyExists) {
+    if (!user) {
       const error = new Error("Email or password incorrect!");
       (error as any).status = 400;
       throw error;
     }
-    const passwordMatch = await compare(password, userAlreadyExists.password);
+    const passwordMatch = await compare(password, user.password);
 
     if (!passwordMatch) {
       const error = new Error("Email or password incorrect!");
@@ -28,11 +28,13 @@ class AutheticateUserUseCase {
       throw error;
     }
 
-    const token = sign({}, "02cbce81-ed12-4129-8b78-3850c55a3c1e", {
-      subject: userAlreadyExists.id,
+    const { password: _, confirm_password: __, ...userWithoutPassword } = user;
+
+    const token = sign({}, process.env.SECRET, {
+      subject: user.id,
     });
 
-    return { token };
+    return { token, user: userWithoutPassword };
   }
 }
 

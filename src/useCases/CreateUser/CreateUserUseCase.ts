@@ -52,10 +52,13 @@ class CreateUserUseCase {
         age,
       },
     });
+
+    const { password: _, confirm_password: __, ...userWithoutPassword } = user;
+
     const token = sign({}, process.env.SECRET, {
       subject: user.id,
     });
-    return { user, token };
+    return { user: userWithoutPassword, token };
   }
 }
 
