@@ -2,6 +2,7 @@ import { hash } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 
 import { client } from "../../prisma/client";
+import { AppError } from "../../utils/AppError";
 
 interface iUserRequest {
   name: string;
@@ -28,18 +29,14 @@ class CreateUserUseCase {
     });
 
     if (userAlreadyExists) {
-      const error = new Error("User already exists!");
-      (error as any).status = 400;
-      throw error;
+      throw new AppError("User already exists!", 400);
     }
 
     const passwordHash = await hash(password, 8);
     const confirmPasswordHash = await hash(confirm_password, 8);
 
     if (password !== confirm_password) {
-      const error = new Error("Passwords do not match!");
-      (error as any).status = 400;
-      throw error;
+      throw new AppError("Passwords do not match!", 400);
     }
 
     const user = await client.user.create({

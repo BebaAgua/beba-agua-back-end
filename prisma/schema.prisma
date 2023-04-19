@@ -16,8 +16,20 @@ model User{
   email             String          @unique
   password          String
   confirm_password  String
-  weight            Float
+  weight            Decimal         @db.Decimal(6,3)
   age               Int
+  waterIntakeGoal   WaterIntakeGoal?
+
 
   @@map("users")
+}
+
+model WaterIntakeGoal {
+  id              String           @id @default(uuid())
+  userId          String           @unique
+  goalAmount      Int
+  date            DateTime         @default(now())
+  user            User             @relation(fields: [userId], references: [id])
+
+  @@map("water_intake_goals")
 }

@@ -2,6 +2,7 @@ import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 
 import { client } from "../../prisma/client";
+import { AppError } from "../../utils/AppError";
 
 interface IRequest {
   email: string;
@@ -16,16 +17,12 @@ class AutheticateUserUseCase {
       },
     });
     if (!user) {
-      const error = new Error("Email or password incorrect!");
-      (error as any).status = 400;
-      throw error;
+      throw new AppError("Email or password incorrect!", 400);
     }
     const passwordMatch = await compare(password, user.password);
 
     if (!passwordMatch) {
-      const error = new Error("Email or password incorrect!");
-      (error as any).status = 400;
-      throw error;
+      throw new AppError("Email or password incorrect!", 400);
     }
 
     const { password: _, confirm_password: __, ...userWithoutPassword } = user;
