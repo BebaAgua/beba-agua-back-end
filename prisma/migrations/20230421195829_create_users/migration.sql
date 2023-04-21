@@ -5,8 +5,10 @@ CREATE TABLE "users" (
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "confirm_password" TEXT NOT NULL,
-    "weight" DECIMAL(6,3) NOT NULL,
+    "weight" DOUBLE PRECISION NOT NULL,
     "age" INTEGER NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
 );

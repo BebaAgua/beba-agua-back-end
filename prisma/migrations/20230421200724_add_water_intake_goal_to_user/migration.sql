@@ -3,7 +3,8 @@ CREATE TABLE "water_intake_goals" (
     "id" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
     "goalAmount" INTEGER NOT NULL,
-    "date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "water_intake_goals_pkey" PRIMARY KEY ("id")
 );

@@ -20,6 +20,10 @@ class CreateWaterIntakeGoalUseCase {
       throw new AppError("User does not exist", 404);
     }
 
+    if (userExists.age !== age || userExists.weight !== weight) {
+      throw new AppError("Invalid age and/or weight", 400);
+    }
+
     const currentWaterIntakeGoal = await client.waterIntakeGoal.findUnique({
       where: {
         userId,
