@@ -10,5 +10,5 @@ export function calculateDailyWaterIntake(weight: number, age: number) {
     recommendedIntake = weight * 25;
   }
 
-  return recommendedIntake;
+  return Math.round(recommendedIntake);
 }
