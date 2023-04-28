@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CreateUserUseCase } from "./CreateUserUseCase";
+import { CreateUserUseCase } from "../useCases/CreateUserUseCase";
 
 class CreateUserController {
   async handle(request: Request, response: Response) {

@@ -1,6 +1,6 @@
-import { client } from "../../prisma/client";
-import { AppError } from "../../utils/AppError";
-import { calculateDailyWaterIntake } from "../../utils/calculateDailyWaterIntake";
+import { client } from "../prisma/client";
+import { AppError } from "../utils/AppError";
+import { calculateDailyWaterIntake } from "../utils/calculateDailyWaterIntake";
 
 interface ICreateWaterIntakeGoalRequest {
   userId: string;

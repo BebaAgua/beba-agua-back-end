@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
-import { client } from "../../prisma/client";
-import { AppError } from "../../utils/AppError";
-import { GetWaterIntakeGoalUseCase } from "./GetWaterIntakeGoalUseCase";
+import { AppError } from "../utils/AppError";
+import { GetWaterIntakeGoalUseCase } from "../useCases/GetWaterIntakeGoalUseCase";
 
 class GetWaterIntakeGoalController {
   async handle(request: Request, response: Response) {

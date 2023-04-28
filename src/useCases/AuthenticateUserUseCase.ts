@@ -1,8 +1,8 @@
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 
-import { client } from "../../prisma/client";
-import { AppError } from "../../utils/AppError";
+import { client } from "../prisma/client";
+import { AppError } from "../utils/AppError";
 
 interface IRequest {
   email: string;

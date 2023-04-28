@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { CreateUserController } from "./useCases/CreateUser/CreateUserController";
-import { AuthenticateUserController } from "./useCases/AuthenticateUser/AuthenticateUserController";
-import { CreateWaterIntakeGoalController } from "./useCases/CreateWaterIntakeGoal/CreateWaterIntakeGoalController";
-import { ensureAuthenticated } from "./middlewares/authMiddleware";
-import { GetWaterIntakeGoalController } from "./useCases/GetWaterIntakeGoal/ GetWaterIntakeGoalController";
+import { CreateUserController } from "./Controllers/CreateUserController";
+import { AuthenticateUserController } from "./Controllers/AuthenticateUserController";
+import { CreateWaterIntakeGoalController } from "./Controllers/CreateWaterIntakeGoalController";
+import { authenticateToken } from "./middlewares/authMiddleware";
+import { GetWaterIntakeGoalController } from "./Controllers/GetWaterIntakeGoalController";
 
 const router = Router();
 
@@ -16,12 +16,12 @@ router.post("/register", createUserController.handle);
 router.post("/login", autheticateUserController.handle);
 router.post(
   "/water-intake-goals",
-  ensureAuthenticated,
+  authenticateToken,
   createWaterIntakeGoalController.handle
 );
 router.get(
   "/water-intake-goal/:userId",
-  ensureAuthenticated,
+  authenticateToken,
   getWaterIntakeGoalController.handle
 );
 

@@ -1,5 +1,5 @@
-import { client } from "../../prisma/client";
-import { AppError } from "../../utils/AppError";
+import { client } from "../prisma/client";
+import { AppError } from "../utils/AppError";
 
 interface IGetWaterIntakeGoalRequest {
   userId: string;
