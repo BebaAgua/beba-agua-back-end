@@ -20,27 +20,24 @@ model User{
   age               Int
   createdAt         DateTime        @default(now())
   updatedAt         DateTime        @updatedAt
-  waterIntakeGoal   WaterIntakeGoal?
+  waterIntakeGoal   WaterIntakeGoal[]
   waterIntakes      WaterIntake[]
-
-
 
   @@map("users")
 }
 
 model WaterIntakeGoal {
   id              String           @id @default(uuid())
-  userId          String           @unique
+  userId          String
   goalAmount      Int
   createdAt       DateTime         @default(now())
-  updatedAt       DateTime         @updatedAt
   user            User             @relation(fields: [userId], references: [id])
 
   @@map("water_intake_goals")
 }
 
 model WaterIntake {
-  id           String               @id @default(uuid())
+  id           String                @id @default(uuid())
   userId       String
   amount       Int
   createdAt    DateTime              @default(now())
