@@ -24,17 +24,21 @@ class CreateWaterIntakeGoalUseCase {
       throw new AppError("Invalid age and/or weight", 400);
     }
 
-    const currentWaterIntakeGoal = await client.waterIntakeGoal.findUnique({
+    const dailyWaterIntake = calculateDailyWaterIntake(weight, age);
+
+    const existingWaterIntakeGoal = await client.waterIntakeGoal.findFirst({
       where: {
         userId,
+        goalAmount: dailyWaterIntake,
       },
     });
 
-    if (currentWaterIntakeGoal) {
-      throw new AppError("User already has a water intake goal", 400);
+    if (existingWaterIntakeGoal) {
+      throw new AppError(
+        "A water intake goal with this amount already exists for this user",
+        400
+      );
     }
-
-    const dailyWaterIntake = calculateDailyWaterIntake(weight, age);
 
     const waterIntakeGoal = await client.waterIntakeGoal.create({
       data: {

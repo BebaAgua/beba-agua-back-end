@@ -17,7 +17,7 @@ class GetWaterIntakeGoalUseCase {
       throw new AppError("User does not exist", 404);
     }
 
-    const waterIntankeGoal = await client.waterIntakeGoal.findUnique({
+    const waterIntankeGoal = await client.waterIntakeGoal.findMany({
       where: {
         userId,
       },

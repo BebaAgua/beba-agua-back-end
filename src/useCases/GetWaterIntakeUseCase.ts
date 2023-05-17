@@ -4,7 +4,6 @@ import { AppError } from "../utils/AppError";
 interface IGetWaterIntakeRequest {
   userId: string;
 }
-
 class GetWaterIntakeUseCase {
   async execute({ userId }: IGetWaterIntakeRequest) {
     const userExists = await client.user.findUnique({

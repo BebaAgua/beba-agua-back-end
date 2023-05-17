@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+
 import { CreateWaterIntakeUseCase } from "../useCases/CreateWaterIntakeUseCase";
 
 class CreateWaterIntakeController {

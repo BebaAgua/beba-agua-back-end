@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
-import { AppError } from "../utils/AppError";
+
 import { GetWaterIntakeGoalUseCase } from "../useCases/GetWaterIntakeGoalUseCase";
+import { AppError } from "../utils/AppError";
 
 class GetWaterIntakeGoalController {
   async handle(request: Request, response: Response) {
