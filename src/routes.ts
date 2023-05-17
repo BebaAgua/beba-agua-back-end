@@ -10,6 +10,8 @@ import { GetWaterIntakeGoalController } from "./Controllers/GetWaterIntakeGoalCo
 import { CreateWaterIntakeController } from "./Controllers/CreateWaterIntakeController";
 import { GetWaterIntakeController } from "./Controllers/GetWaterIntakeController";
 
+import { UpdateUserController } from "./Controllers/UpdateUserController";
+
 const router = Router();
 
 const createUserController = new CreateUserController();
@@ -21,6 +23,8 @@ const getWaterIntakeGoalController = new GetWaterIntakeGoalController();
 
 const createWaterIntakeController = new CreateWaterIntakeController();
 const getWaterIntakeController = new GetWaterIntakeController();
+
+const updateUserController = new UpdateUserController();
 
 router.post("/register", createUserController.handle);
 
@@ -49,5 +53,7 @@ router.get(
   authenticateToken,
   getWaterIntakeController.handle
 );
+
+router.put("/user/:userId", authenticateToken, updateUserController.handle);
 
 export { router };
