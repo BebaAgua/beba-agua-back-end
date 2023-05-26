@@ -1,3 +1,5 @@
+import moment from "moment-timezone";
+
 import { client } from "../prisma/client";
 import { AppError } from "../utils/AppError";
 
@@ -25,7 +27,12 @@ class CreateWaterIntakeUseCase {
       },
     });
 
-    return waterIntake;
+    const waterIntakeWithTimeZone = {
+      ...waterIntake,
+      createdAt: moment(waterIntake.createdAt).tz("America/Sao_Paulo").format(),
+    };
+
+    return waterIntakeWithTimeZone;
   }
 }
 
