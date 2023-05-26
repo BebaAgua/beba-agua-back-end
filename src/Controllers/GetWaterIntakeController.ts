@@ -5,12 +5,14 @@ import { AppError } from "../utils/AppError";
 
 class GetWaterIntakeController {
   async handle(request: Request, response: Response) {
-    const { userId } = request.params;
+    const { userId, startDate, endDate } = request.params;
 
     const getWaterIntakeUseCase = new GetWaterIntakeUseCase();
 
     const waterIntake = await getWaterIntakeUseCase.execute({
       userId,
+      startDate,
+      endDate,
     });
 
     if (!waterIntake) {

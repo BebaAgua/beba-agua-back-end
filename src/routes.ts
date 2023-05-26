@@ -49,7 +49,7 @@ router.post(
 );
 
 router.get(
-  "/water-intake/:userId",
+  "/water-intake/:userId/:startDate/:endDate",
   authenticateToken,
   getWaterIntakeController.handle
 );
