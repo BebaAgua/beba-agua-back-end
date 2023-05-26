@@ -1,8 +1,12 @@
+import moment from "moment-timezone";
 import { client } from "../prisma/client";
 import { AppError } from "../utils/AppError";
 
 interface IGetWaterIntakeRequest {
   userId: string;
+  createdAt?: string;
+  startDate?: string;
+  endDate?: string;
 }
 class GetWaterIntakeUseCase {
   async execute({ userId }: IGetWaterIntakeRequest) {
@@ -16,17 +20,27 @@ class GetWaterIntakeUseCase {
       throw new AppError("User does not exist", 404);
     }
 
-    const waterIntanke = await client.waterIntake.findMany({
+    const waterIntake = await client.waterIntake.findMany({
       where: {
         userId,
       },
     });
 
-    if (!waterIntanke) {
+    const waterIntakeWithTimeZone = waterIntake.map((item) => {
+      const createdAtWithTimeZone = moment(item.createdAt)
+        .tz("America/Sao_Paulo")
+        .format();
+      return {
+        ...item,
+        createdAt: createdAtWithTimeZone,
+      };
+    });
+
+    if (waterIntakeWithTimeZone.length === 0) {
       throw new AppError("User does not have a water intake", 404);
     }
 
-    return waterIntanke;
+    return waterIntakeWithTimeZone;
   }
 }
 export { GetWaterIntakeUseCase };

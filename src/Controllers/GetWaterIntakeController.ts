@@ -9,7 +9,9 @@ class GetWaterIntakeController {
 
     const getWaterIntakeUseCase = new GetWaterIntakeUseCase();
 
-    const waterIntake = await getWaterIntakeUseCase.execute({ userId });
+    const waterIntake = await getWaterIntakeUseCase.execute({
+      userId,
+    });
 
     if (!waterIntake) {
       throw new AppError("Water intake goal not found", 404);
