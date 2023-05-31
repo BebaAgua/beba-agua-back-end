@@ -26,20 +26,6 @@ class CreateWaterIntakeGoalUseCase {
 
     const dailyWaterIntake = calculateDailyWaterIntake(weight, age);
 
-    const existingWaterIntakeGoal = await client.waterIntakeGoal.findFirst({
-      where: {
-        userId,
-        goalAmount: dailyWaterIntake,
-      },
-    });
-
-    if (existingWaterIntakeGoal) {
-      throw new AppError(
-        "A water intake goal with this amount already exists for this user",
-        400
-      );
-    }
-
     const waterIntakeGoal = await client.waterIntakeGoal.create({
       data: {
         userId,
