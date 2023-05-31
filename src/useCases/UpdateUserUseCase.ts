@@ -5,9 +5,9 @@ import { AppError } from "../utils/AppError";
 
 interface iUpdateUser {
   userId: string;
-  name: string;
-  weight: number;
-  age: number;
+  name?: string;
+  weight?: number;
+  age?: number;
 }
 
 class UpdateUserUseCase {
