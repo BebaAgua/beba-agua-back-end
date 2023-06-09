@@ -28,8 +28,9 @@ Back End do projeto de conclusão do curso de Análise e Desenvolvimento de Sist
 
 - ✅ Cadastro de usuários;
 - ✅ Login de usuários;
-- Metas de consumo de água;
-- Ingestão de água feita pelo usuário por dia.
+- ✅ Metas de consumo de água;
+- ✅ Ingestão de água feita pelo usuário por dia;
+- ✅ Update do usuário;
 
 <a id="run"></a>
 
